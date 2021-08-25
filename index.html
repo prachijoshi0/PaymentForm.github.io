@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    
+    <title>Payment Form</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://source.unsplash.com/collection/190727/1600x900');
+            background-repeat: no-repeat;
+            background-size: cover;
+            image-resolution: unset;
+            width: 100%;
+            height: 100%;
+            
+        }
+     
+        form{
+            
+        margin: 50px;
+          
+      
+            
+        }
+        label{
+            font-family: 'Montserrat', sans-serif;
+            
+        }
+        .container{
+            display: inline-flexbox;
+            margin-left: 50px;
+            border: 5px solid rgb(255, 255, 255);
+            padding: 40px;
+            border-radius: 20px;
+        }
+        .form{
+            background-color: rgb(165, 77, 253);
+            width: 30%;
+            margin-top: 25px;
+            border-radius: 20px;
+            
+         
+            box-shadow: 0 0 20px rgb(59, 59, 59);
+        }
+        input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel]{
+            padding: 10px;
+            border-radius: 10px;
+            border-color: azure;
+            margin: 10px 0 10px 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+          
+            
+        }
+        input:focus{
+            outline: none;
+            padding: 10px;
+        }
+        .btn{
+            margin-top: 25px;
+            padding: 15px 33px 15px 33px;
+            border-radius: 10px;
+            border: 3px solid black;
+            background-color: black;
+            color: beige;
+
+        }
+        .btn:hover{
+            padding: 17px 33px 17px 33px;
+            background-color: aqua;
+            border: 5px solid whitesmoke;
+
+        }
+        .btn:active{
+            background-color: bisque;
+            color: black;
+        }
+        @media (max-width:1024px){
+            body{
+                background-image: url('https://source.unsplash.com/collection/190727/1600x900');
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+            .form{
+                width: 70%;
+                height: 550px;
+            }
+            .container{
+                display:inline-flexbox;
+               flex-wrap: nowrap;
+               flex-grow: inherit;
+               flex-direction: column;
+               flex: 1;
+    
+            border: none;
+            margin-left:10px ;
+            padding: 20px;
+            border-radius: 20px;
+            }
+            input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel]{
+              display: inline-flex;
+            padding: 3px 0;
+            padding-left: 15px;
+
+            }
+            label{
+               margin-top: 0;
+               margin-bottom: 0;
+               font-size: smaller;
+            }
+            .btn{
+          
+            padding: 13px 30px 13px 30px;
+        margin-left: 20px;
+
+        }
+        .btn:hover{
+            padding: 17px 33px 17px 33px;
+            background-color: aqua;
+            border: 5px solid whitesmoke;
+
+        }
+        }
+     
+
+    </style>
+</head>
+<body>
+    <div class="form">
+    <form action="homePage.html" method="POST" target="_blank" class="container" name="Submit-to-google-sheet">
+        <label for="name">Username</label>
+        <br>
+        <input type="text" name="name" placeholder="Enter your name"  required >
+        <br>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" placeholder="Enter your email" class="inputField" required>
+        <br>
+        <label for="Phone no">Phone no</label>
+        <br>
+        <input type="tel" name="Phone no" placeholder="Enter your number"class="inputField" required>
+        <br>
+        <label for="pswd" >Password</label>
+        <br>
+        <input type="password" name="pswd" placeholder="Enter your password" class="inputField" required>
+        <br>
+        <label for="payment">Amount</label>
+        <br>
+        <input type="number" name="payment" placeholder="Enter the amount" class="inputField" required>
+        <button class="btn">Continue To Payment</button>
+    </form>
+    </div>
+</body>
+<script>
+                        
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxn7h3MViCbP_XioXsKZ6GQ8Tl8W406Ar_5bDz8OfzHHfjDSKdFyTly4PV798mgcoFg/exec'
+    const form = document.forms['Submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  
+          </script>  
+
+</html>
